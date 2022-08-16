@@ -1,0 +1,24 @@
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": true,
+  "importOrder": [
+    "^@assets/(.*)$",
+    "^@components/(.*)$",
+    "^@constants/(.*)$",
+    "^@hooks/(.*)$",
+    "^@i18n/(.*)$",
+    "^@libs/(.*)$",
+    "^@screens/(.*)$",
+    "^@stores/(.*)$",
+    "^@styles/(.*)$",
+    "^@types/(.*)$",
+    "^@utils/(.*)$",
+    "^~/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
