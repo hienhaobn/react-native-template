@@ -1,7 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { createLogger } from 'redux-logger';
-import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } from 'redux-persist';
+// import { createLogger } from 'redux-logger';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
 import blacklist from './configs/blacklist';
@@ -17,7 +26,7 @@ const persistConfig = {
 };
 
 const sagaMiddleware = createSagaMiddleware();
-const logger = createLogger();
+// const logger = createLogger();
 
 // list models
 const rootReducer = combineReducers({
@@ -33,12 +42,13 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    })
-      .concat(sagaMiddleware)
-      .concat(logger),
+    }).concat(sagaMiddleware),
+  // .concat(logger),
 });
 
 sagaMiddleware.run(rootSaga);
+
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 

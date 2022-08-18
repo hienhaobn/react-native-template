@@ -1,11 +1,10 @@
 import { LogBox, Platform, UIManager } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import Color from 'styles/color';
-
 import { registerScreens } from './navigation';
 import { startApp } from './screens';
 import { store } from './stores';
+import { getThemeColor } from './styles/colors';
 
 // Ignore yellow box
 LogBox.ignoreLogs([
@@ -44,12 +43,12 @@ Navigation.setDefaultOptions({
   },
   // TODO: custom bottom bar
   bottomTabs: {
-    backgroundColor: Color.backgroundBase,
+    backgroundColor: getThemeColor().backgroundBase,
     titleDisplayMode: 'alwaysShow',
   },
   bottomTab: {
-    textColor: Color.textBase,
-    selectedTextColor: Color.textBase,
+    textColor: getThemeColor().textBase,
+    selectedTextColor: getThemeColor().textBase,
     fontSize: 12,
   },
   statusBar: {
