@@ -1,4 +1,11 @@
-import { LogBox } from 'react-native';
+import { LogBox, Platform, UIManager } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+
+import Color from 'styles/color';
+
+import { registerScreens } from './navigation';
+import { startApp } from './screens';
+import { store } from './stores';
 
 // Ignore yellow box
 LogBox.ignoreLogs([
@@ -14,3 +21,39 @@ LogBox.ignoreLogs([
   'Non-se',
   'ViewPr',
 ]);
+
+// Enable LayoutAnimation on android
+if (Platform.OS === 'android') {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
+// Register Screen
+registerScreens(store);
+
+// start application
+Navigation.events().registerAppLaunchedListener(() => {
+  startApp();
+});
+
+// set detault options
+Navigation.setDefaultOptions({
+  topBar: {
+    visible: false,
+    drawBehind: true,
+    animate: false,
+  },
+  // TODO: custom bottom bar
+  bottomTabs: {
+    backgroundColor: Color.backgroundBase,
+    titleDisplayMode: 'alwaysShow',
+  },
+  bottomTab: {
+    textColor: Color.textBase,
+    selectedTextColor: Color.textBase,
+    fontSize: 12,
+  },
+  statusBar: {
+    backgroundColor: 'white',
+    style: 'dark',
+  },
+});
