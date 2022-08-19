@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CircularSpotifyText-Black.otf</string>
+		<string>CircularSpotifyText-BlackItalic.otf</string>
+		<string>CircularSpotifyText-Bold.otf</string>
+		<string>CircularSpotifyText-Book.otf</string>
+		<string>CircularSpotifyText-BookItalic.otf</string>
+		<string>CircularSpotifyText-Light.otf</string>
+		<string>CircularSpotifyText-Medium.otf</string>
+		<string>CircularSpotifyText-MediumItalic.otf</string>
+	</array>
 </dict>
 </plist>

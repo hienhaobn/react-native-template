@@ -6,6 +6,10 @@ export enum EThemeColor {
 }
 
 const Light = {
+  transparent: 'transparent',
+  transparentBlack1: 'rgba(0, 0, 0, 0.1)',
+  transparentBlack7: 'rgba(0, 0, 0, 0.7)',
+
   backgroundBase: '#121212',
   backgroundPress: '#181818',
   textBase: '#FFFFFF',

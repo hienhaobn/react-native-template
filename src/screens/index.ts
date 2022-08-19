@@ -1,6 +1,7 @@
 import { StatusBar } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
+import AlbumScreen from './album/album.screen';
 import HomeScreen from './home/home.screen';
 import LibraryScreen from './library/library.screen';
 import PremiumScreen from './premium/premium.screen';
@@ -12,14 +13,16 @@ export const SEARCH_SCREEN = 'spotify.SearchScreen';
 export const LIBRARY_SCREEN = 'spotify.LibraryScreen';
 export const PREMIUM_SCREEN = 'spotify.PremiumScreen';
 export const PROFILE_SCREEN = 'spotify.ProfileScreen';
-export const TAB_BOTTOM = 'spotify.TabBottom';
+export const ALBUM_SCREEN = 'spotify.AlbumScreen';
 
 export const Screens = new Map();
+
 Screens.set(HOME_SCREEN, HomeScreen);
 Screens.set(SEARCH_SCREEN, SearchScreen);
 Screens.set(LIBRARY_SCREEN, LibraryScreen);
 Screens.set(PREMIUM_SCREEN, PremiumScreen);
 Screens.set(PROFILE_SCREEN, ProfileScreen);
+Screens.set(ALBUM_SCREEN, AlbumScreen);
 
 export const startApp = () => {
   StatusBar.setBarStyle('dark-content', true);
@@ -27,11 +30,11 @@ export const startApp = () => {
   return Navigation.setRoot({
     root: {
       bottomTabs: {
-        id: 'ROOT',
+        id: 'BOTTOM_TABS_ROOT',
         children: [
           {
             stack: {
-              id: 'BOTTOM_TABS_LAYOUT',
+              id: 'HOME_TAB_STACK',
               children: [
                 {
                   component: {
@@ -50,6 +53,7 @@ export const startApp = () => {
           },
           {
             stack: {
+              id: 'SEARCH_TAB_STACK',
               children: [
                 {
                   component: {
@@ -68,6 +72,7 @@ export const startApp = () => {
           },
           {
             stack: {
+              id: 'LIBRARY_TAB_STACK',
               children: [
                 {
                   component: {
@@ -86,6 +91,7 @@ export const startApp = () => {
           },
           {
             stack: {
+              id: 'PREMIUM_TAB_STACK',
               children: [
                 {
                   component: {

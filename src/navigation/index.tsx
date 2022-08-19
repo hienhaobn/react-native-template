@@ -22,7 +22,7 @@ export const registerScreens = (store: any) => {
   // Register screens
   // TODO: https://docs.swmansion.com/react-native-gesture-handler/docs/1.10.3/
   Screens.forEach((ScreenComponent, key) => {
-    return Navigation.registerComponent(
+    Navigation.registerComponent(
       key,
       () => withNavigationProvider(WrapScreen(gestureHandlerRootHOC(ScreenComponent), store)),
       () => gestureHandlerRootHOC(ScreenComponent)

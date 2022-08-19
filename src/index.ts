@@ -43,7 +43,7 @@ Navigation.setDefaultOptions({
   },
   // TODO: custom bottom bar
   bottomTabs: {
-    backgroundColor: getThemeColor().backgroundBase,
+    backgroundColor: getThemeColor().backgroundPress,
     titleDisplayMode: 'alwaysShow',
   },
   bottomTab: {

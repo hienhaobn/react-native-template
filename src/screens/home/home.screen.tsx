@@ -1,33 +1,46 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 
-import { useAppDispatch, useAppSelector } from 'hooks/useState';
+import { useTheme } from 'hooks/useTheme';
 
-import { increment } from 'stores/counter';
+import { EThemeColor, getThemeColor } from 'styles/colors';
 
-const HomeScreen = () => {
-  const count = useAppSelector((state) => state.counter.value);
-  const dispatch = useAppDispatch();
+import { scale } from 'utils/scale';
+
+import HomeHeader from './components/home-header';
+
+interface IProps {
+  componentId: string;
+}
+
+const HomeScreen = (props: IProps) => {
+  const { themeCurrent } = useTheme();
+  const styles = customStyles(themeCurrent);
+
   return (
     <SafeAreaView style={[styles.container]}>
-      <Text>{count}</Text>
-      <Text>Home Screen</Text>
-      <TouchableOpacity
-        style={{
-          backgroundColor: 'gray',
-        }}
-        onPress={() => dispatch(increment())}
-      >
-        <Text>+</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <HomeHeader />
+      </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const customStyles = (themeCurrent: EThemeColor) => {
+  const color = getThemeColor(themeCurrent);
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: getThemeColor().backgroundBase,
+    },
+    content: {
+      marginHorizontal: scale(12),
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+  });
+};
 
 export default HomeScreen;
